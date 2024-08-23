@@ -6,7 +6,7 @@ import { MobileNavigation } from './ui/mobile'
 
 export function Header() {
   return (
-    <header className="w-full px-4 lg:px-6 py-2 fixed top-0">
+    <header className="w-full px-4 lg:px-6 py-2 fixed top-0 mb-16">
       <nav className="flex items-center">
         <Link href={'/'}>
           <Image src={'/logo.svg'} alt="logo" width={50} height={50} />

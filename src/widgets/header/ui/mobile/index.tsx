@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import { NavigationList } from '../list'
 
 import { BarcodeIcon } from 'lucide-react'
@@ -14,8 +16,11 @@ export function MobileNavigation() {
             <BarcodeIcon width={40} height={40} />
           </Button>
         </SheetTrigger>
-        <SheetContent className='flex flex-col items-start'>
+        <SheetContent className="flex flex-col items-start">
           <NavigationList />
+          <Link className="text-2xl lg:text-lg lg:hover:text-gray-600" href={'/signin'}>
+            Войти
+          </Link>
         </SheetContent>
       </Sheet>
     </div>

@@ -11,7 +11,7 @@ export function DesktopNavigation() {
         <NavigationList />
       </ul>
 
-      <Link href={'/'}>
+      <Link href={'/signin'}>
         <Button size={'lg'}>Войти</Button>
       </Link>
     </div>
