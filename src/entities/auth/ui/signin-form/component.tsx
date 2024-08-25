@@ -1,3 +1,4 @@
+import { cookies } from 'next/headers'
 import Link from 'next/link'
 import { redirect } from 'next/navigation'
 
@@ -14,6 +15,12 @@ export function SigninForm() {
         'use server'
 
         console.log(data.get('info'))
+
+        cookies().set('session', 'value12345', {
+          httpOnly: true,
+          expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+          secure: true
+        })
 
         redirect('/')
       }}
