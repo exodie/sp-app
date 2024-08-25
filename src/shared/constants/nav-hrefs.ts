@@ -11,8 +11,4 @@ export const navHrefs = [
     title: 'О нас',
     href: '/info'
   },
-  {
-    title: 'Блог',
-    href: '/blog'
-  }
 ]
