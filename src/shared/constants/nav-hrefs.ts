@@ -1,7 +1,7 @@
 export const navHrefs = [
   {
-    title: 'Реп. базы',
-    href: '/base'
+    title: 'Бронирование',
+    href: '/booking'
   },
   {
     title: 'Присоединиться',
