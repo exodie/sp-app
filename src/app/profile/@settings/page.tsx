@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 import { ProfileCardSection } from '@/entities/profile/ui/card-section'
 
-import { Input } from '@/shared/ui/input'
+import { Button } from '@/shared/ui/button'
 import { Label } from '@/shared/ui/label'
 import { H3 } from '@/shared/ui/typography'
 
@@ -12,20 +12,20 @@ export default function Settings() {
       <H3>Настройки</H3>
 
       <div className="w-fit flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
-        <form className="space-y-1">
+        <div className="space-y-1 flex flex-col">
           <Label htmlFor="email">Изменить Email?</Label>
-          <Input type="email" id="email" placeholder="**************" />
-        </form>
+          <Button>Изменить</Button>
+        </div>
 
-        <form className="space-y-1">
+        <div className="space-y-1 flex flex-col">
           <Label>Изменить номер телефона?</Label>
-          <Input type="tel" id="phoneNumber" placeholder="+7**********" />
-        </form>
+          <Button>Изменить</Button>
+        </div>
 
-        <div>
+        <div className="space-y-1 flex flex-col">
           <Label htmlFor="services">Привязанные сервисы</Label>
           <div className="flex space-y-0" id="services">
-            <Link href={'/connect/telegram'} target="_blank" className=''>
+            <Link href={'/connect/telegram'} target="_blank">
               Telegram
             </Link>
           </div>
