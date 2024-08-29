@@ -10,5 +10,5 @@ export const navHrefs = [
   {
     title: 'О нас',
     href: '/info'
-  },
+  }
 ]

@@ -28,7 +28,9 @@ export function SwitchThemes() {
       <DropdownMenuContent align="end">
         <DropdownMenuItem onClick={() => setTheme('light')}>Светлая</DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme('dark')}>Темная</DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme('system')}>Системная</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme('system')}>
+          Системная
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   )
