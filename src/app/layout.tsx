@@ -7,6 +7,7 @@ import { ThemeProvider } from './theme-provider'
 import { Layout } from '@/widgets/layout'
 
 import { cn } from '@/shared/lib/utils'
+import { Toaster } from '@/shared/ui/toaster'
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -38,6 +39,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Layout>{children}</Layout>
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

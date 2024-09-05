@@ -1,6 +1,8 @@
 'use client'
 
-import * as React from 'react'
+import { useState } from 'react'
+
+import { useSearchParams, useRouter, usePathname } from 'next/navigation'
 
 import { Check, ChevronsUpDown } from 'lucide-react'
 
@@ -16,24 +18,48 @@ import {
 } from '@/shared/ui/command'
 import { Popover, PopoverContent, PopoverTrigger } from '@/shared/ui/popover'
 
+// Get from API later...
 const cities = [
   {
-    value: 'Самара',
+    value: 'samara',
     label: 'Самара'
   },
   {
-    value: 'Москва',
+    value: 'moscow',
     label: 'Москва'
   },
   {
-    value: 'Санкт-Петербург',
+    value: 'saintpeterbur',
     label: 'Санкт-Петербург'
   }
 ]
 
 export function ToggleCity() {
-  const [open, setOpen] = React.useState(false)
-  const [value, setValue] = React.useState('')
+  const searchParams = useSearchParams()
+  const pathname = usePathname()
+  const router = useRouter()
+
+  const [open, setOpen] = useState(false)
+  const [value, setValue] = useState<string>(searchParams.get('city') || '')
+
+  const selectHandler = (currentValue: string) => {
+    const currentUrl = new URLSearchParams(Array.from(searchParams.entries()))
+    const trimValue = currentValue.trim()
+
+    if (!trimValue) {
+      currentUrl.delete('city')
+    } else {
+      currentUrl.set('city', currentValue)
+    }
+
+    const search = currentUrl.toString()
+    const query = search ? `?${search}` : ''
+
+    setValue(currentValue === value ? '' : currentValue)
+    setOpen(false)
+
+    router.push(`${pathname}${query}`)
+  }
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -54,16 +80,13 @@ export function ToggleCity() {
         <Command>
           <CommandInput placeholder="Найдите город..." />
           <CommandList>
-            <CommandEmpty>No framework found.</CommandEmpty>
+            <CommandEmpty>Город не найден.</CommandEmpty>
             <CommandGroup>
               {cities.map((city) => (
                 <CommandItem
                   key={city.value}
                   value={city.value}
-                  onSelect={(currentValue: string) => {
-                    setValue(currentValue === value ? '' : currentValue)
-                    setOpen(false)
-                  }}
+                  onSelect={(currentValue: string) => selectHandler(currentValue)}
                 >
                   <Check
                     className={cn(
